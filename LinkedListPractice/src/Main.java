@@ -13,10 +13,11 @@ public class Main {
 		linkedList.appendAfterNodeData(3,234);
 		linkedList.append(13);
 		
-		System.out.println(linkedList.length());	
-		System.out.println(linkedList.search(3));
-
 		linkedList.print();
+		System.out.println("Before Deletion: "+linkedList.length());
+		System.out.println("Element found? "+linkedList.search(3));
+		linkedList.delete(13);	
+		System.out.println("After Deletion: "+linkedList.length());
 
 	}
 }

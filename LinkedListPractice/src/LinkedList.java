@@ -9,11 +9,13 @@ public class LinkedList {
 	public void print() {
 		if (this.head != null) {
 			Node temp = this.head;
-
+			System.out.print("START --> ");
+			
 			while (temp != null) {
 				System.out.print(temp.data + " --> ");
 				temp = temp.nextNode;
 			}
+			System.out.println("END");
 		}
 	}
 
@@ -51,7 +53,6 @@ public class LinkedList {
 				count++;
 			}
 		}
-
 		return count;
 	}
 
@@ -87,6 +88,33 @@ public class LinkedList {
 				temp = temp.nextNode;
 			}
 		}
+	}
+
+	public void delete(int data) {
+
+		boolean status = search(data);
+
+		if (status) {
+			if (this.head == null) {
+				System.out.println("Empty Linked List");
+			} else {
+				Node temp = this.head;
+				while (temp != null) {
+					if (temp.nextNode != null && temp.nextNode.data == data) {
+						temp.nextNode = temp.nextNode.nextNode;
+						break;
+					}
+
+					if (this.head.data == data) {
+						this.head = this.head.nextNode;
+					}
+
+					temp = temp.nextNode;
+				}
+			}
+
+		} else
+			System.out.println("Record not found");
 	}
 
 	static class Node {
