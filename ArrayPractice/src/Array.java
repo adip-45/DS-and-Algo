@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 public class Array {
 
@@ -7,13 +6,16 @@ public class Array {
 	private int len = 0;
 	private int pointer;
 
+	//Create Array of size "N"
 	public Array(int size) {
 		this.arr = new int[size];
 		this.len = size;
+		this.pointer = 0;
 	}
 
+	//Insert Data at the end of the Array
 	public void insert(int data) {
-		if (pointer >= this.len) {
+		if (this.pointer >= this.len) {
 			System.out.println("Array is full");
 		} else {
 			this.arr[pointer] = data;
@@ -21,22 +23,24 @@ public class Array {
 		}
 	}
 
+	//Insert data at a particular index in the Array
 	public void insertIndex(int index, int data) {
-		if (pointer >= this.len) {
+		if (this.pointer >= this.len) {
 			System.out.println("Array is full");
 		} else {
-			int count = pointer;
+			int count = this.pointer;
 			while (count > index) {
 				this.arr[count] = this.arr[count - 1];
 				count--;
 			}
 			arr[index] = data;
-			pointer++;
+			this.pointer++;
 		}
 	}
 
+	//Delete last element of the Array
 	public void delete() {
-		if (pointer == 0) {
+		if (this.pointer == 0) {
 			System.out.println("Empty Array");
 		} else {
 			this.arr[pointer - 1] = 0;
@@ -45,17 +49,19 @@ public class Array {
 
 	}
 
+	//Delete element at a particular index in the Array
 	public void deleteIndex(int index) {
-		while (index < pointer - 1) {
+		while (index < this.pointer - 1) {
 			this.arr[index] = this.arr[index + 1];
 			index++;
 		}
 		arr[index] = 0;
-		pointer--;
+		this.pointer--;
 	}
 
+	//Search a particular data in the Array
 	public int search(int data) {
-		if (pointer == 0) {
+		if (this.pointer == 0) {
 			return -1;
 		}
 
@@ -67,12 +73,13 @@ public class Array {
 		return -1;
 	}
 
+	//Bubble Sort
 	public int[] sort() {
 		if (i == 0) {
 			System.out.println("Empty Array");
 		} else {
-			for (i = 0; i < pointer; i++) {
-				for (int j = 0; j < pointer - 1; j++) {
+			for (i = 0; i < this.pointer; i++) {
+				for (int j = 0; j < this.pointer - 1; j++) {
 					if (this.arr[j] > this.arr[j + 1]) {
 						int temp = arr[j];
 						arr[j] = arr[j + 1];
@@ -84,8 +91,9 @@ public class Array {
 		return this.arr;
 	}
 
+	//Traverse and print the Array
 	public void print() {
-		for (i = 0; i < pointer; i++) {
+		for (i = 0; i < this.pointer; i++) {
 			System.out.print(this.arr[i]+" ");
 		}
 		System.out.println("");
