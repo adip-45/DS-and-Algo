@@ -10,10 +10,10 @@ public class LinkedList {
 		if (this.head != null) {
 			Node temp = this.head;
 			System.out.print("START --> ");
-			
+
 			while (temp != null) {
 				System.out.print(temp.data + " --> ");
-				temp = temp.nextNode;
+				temp = temp.next;
 			}
 			System.out.println("END");
 		}
@@ -21,7 +21,7 @@ public class LinkedList {
 
 	public void push(int data) {
 		Node newNode = new Node(data);
-		newNode.nextNode = this.head;
+		newNode.next = this.head;
 		this.head = newNode;
 	}
 
@@ -34,10 +34,10 @@ public class LinkedList {
 
 			Node temp = this.head;
 
-			while (temp.nextNode != null) {
-				temp = temp.nextNode;
+			while (temp.next != null) {
+				temp = temp.next;
 			}
-			temp.nextNode = newNode;
+			temp.next = newNode;
 		}
 	}
 
@@ -49,7 +49,7 @@ public class LinkedList {
 			Node temp = this.head;
 
 			while (temp != null) {
-				temp = temp.nextNode;
+				temp = temp.next;
 				count++;
 			}
 		}
@@ -63,7 +63,7 @@ public class LinkedList {
 				if (temp.data == data) {
 					return true;
 				}
-				temp = temp.nextNode;
+				temp = temp.next;
 			}
 		} else {
 			System.out.println("Empty LinkedList");
@@ -71,7 +71,7 @@ public class LinkedList {
 		return false;
 	}
 
-	public void appendAfterNodeData(int nodeData, int data) {
+	public void afterNode(int nodeData, int data) {
 
 		Node newNode = new Node(data);
 
@@ -81,11 +81,11 @@ public class LinkedList {
 			Node temp = this.head;
 			while (temp != null) {
 				if (temp.data == nodeData) {
-					newNode.nextNode = temp.nextNode;
-					temp.nextNode = newNode;
+					newNode.next = temp.next;
+					temp.next = newNode;
 				}
 
-				temp = temp.nextNode;
+				temp = temp.next;
 			}
 		}
 	}
@@ -100,16 +100,16 @@ public class LinkedList {
 			} else {
 				Node temp = this.head;
 				while (temp != null) {
-					if (temp.nextNode != null && temp.nextNode.data == data) {
-						temp.nextNode = temp.nextNode.nextNode;
+					if (temp.next != null && temp.next.data == data) {
+						temp.next = temp.next.next;
 						break;
 					}
 
 					if (this.head.data == data) {
-						this.head = this.head.nextNode;
+						this.head = this.head.next;
 					}
 
-					temp = temp.nextNode;
+					temp = temp.next;
 				}
 			}
 
@@ -117,14 +117,74 @@ public class LinkedList {
 			System.out.println("Record not found");
 	}
 
+	public Node getMiddle() {
+		if(head != null) {
+			Node fast = head;
+			Node slow = head;
+			
+			while(slow.next != null && fast.next != null && fast.next.next != null) {
+				fast = fast.next.next;
+				slow = slow.next;
+			}
+			
+			return slow;
+		}
+		return null;
+	}
+	
+	public Node getNFromLast(int n) {
+		if(head != null) {
+			
+			int count = 0;
+			
+			Node fast = head;
+			Node slow = head;
+			
+			while(fast.next != null) {
+				fast = fast.next;
+				if(count == n)
+					slow = slow.next;
+				count++;
+			}
+			
+			return slow;
+		}
+		
+		
+		return null;
+	}
+	
+	public boolean checkLoop() {
+		boolean loop = false;
+		
+		if(head != null) {
+			
+			Node fast = head;
+			Node slow = head;
+			
+			while(slow.next!= null && fast.next != null && fast.next.next != null) {
+				fast = fast.next.next;
+				slow = slow.next;
+				
+				if(fast.equals(slow)) {
+					loop = true;
+					break;
+				}
+			}
+			
+		}
+		
+		return loop;
+	}
+	
 	static class Node {
 
 		private int data;
-		private Node nextNode;
+		private Node next;
 
 		public Node(int data) {
 			this.data = data;
-			this.nextNode = null;
+			this.next = null;
 		}
 
 		public int getData() {
@@ -136,11 +196,11 @@ public class LinkedList {
 		}
 
 		public Node getNextNode() {
-			return nextNode;
+			return next;
 		}
 
 		public void setNextNode(Node nextNode) {
-			this.nextNode = nextNode;
+			this.next = nextNode;
 		}
 
 	}
