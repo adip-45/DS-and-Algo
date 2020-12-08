@@ -6,6 +6,7 @@ public class LinkedList {
 		this.head = null;
 	}
 
+	//Traverse and print the Linked List
 	public void print() {
 		if (this.head != null) {
 			Node temp = this.head;
@@ -19,12 +20,14 @@ public class LinkedList {
 		}
 	}
 
+	//Add a node at the start of the Linked List
 	public void push(int data) {
 		Node newNode = new Node(data);
 		newNode.next = this.head;
 		this.head = newNode;
 	}
 
+	//Add a node in the end of the Linked List
 	public void append(int data) {
 		Node newNode = new Node(data);
 
@@ -41,6 +44,7 @@ public class LinkedList {
 		}
 	}
 
+	//Find the length of the Linked List
 	public int length() {
 
 		int count = 0;
@@ -56,6 +60,7 @@ public class LinkedList {
 		return count;
 	}
 
+	//Search a node in the Linked List
 	public boolean search(int data) {
 		if (this.head != null) {
 			Node temp = this.head;
@@ -71,6 +76,7 @@ public class LinkedList {
 		return false;
 	}
 
+	//Add node after a particular node in the Linked List
 	public void afterNode(int nodeData, int data) {
 
 		Node newNode = new Node(data);
@@ -90,6 +96,7 @@ public class LinkedList {
 		}
 	}
 
+	//Delete a node in the Linked List
 	public void delete(int data) {
 
 		boolean status = search(data);
@@ -117,6 +124,7 @@ public class LinkedList {
 			System.out.println("Record not found");
 	}
 
+	//Find middle node of the Linked List
 	public Node getMiddle() {
 		if(head != null) {
 			Node fast = head;
@@ -131,7 +139,8 @@ public class LinkedList {
 		}
 		return null;
 	}
-	
+
+	//Find Nth node from last in the Linked List
 	public Node getNFromLast(int n) {
 		if(head != null) {
 			
@@ -153,7 +162,8 @@ public class LinkedList {
 		
 		return null;
 	}
-	
+
+	//Check if loop is present in the Linked List
 	public boolean checkLoop() {
 		boolean loop = false;
 		
@@ -176,7 +186,8 @@ public class LinkedList {
 		
 		return loop;
 	}
-	
+
+	//Node class
 	static class Node {
 
 		private int data;
