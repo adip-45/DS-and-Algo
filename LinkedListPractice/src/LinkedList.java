@@ -1,3 +1,4 @@
+
 public class LinkedList {
 
 	private Node head;
@@ -6,7 +7,7 @@ public class LinkedList {
 		this.head = null;
 	}
 
-	//Traverse and print the Linked List
+	// Traverse and print the Linked List
 	public void print() {
 		if (this.head != null) {
 			Node temp = this.head;
@@ -20,14 +21,14 @@ public class LinkedList {
 		}
 	}
 
-	//Add a node at the start of the Linked List
+	// Add a node at the start of the Linked List
 	public void push(int data) {
 		Node newNode = new Node(data);
 		newNode.next = this.head;
 		this.head = newNode;
 	}
 
-	//Add a node in the end of the Linked List
+	// Add a node in the end of the Linked List
 	public void append(int data) {
 		Node newNode = new Node(data);
 
@@ -44,7 +45,7 @@ public class LinkedList {
 		}
 	}
 
-	//Find the length of the Linked List
+	// Find the length of the Linked List
 	public int length() {
 
 		int count = 0;
@@ -60,7 +61,7 @@ public class LinkedList {
 		return count;
 	}
 
-	//Search a node in the Linked List
+	// Search a node in the Linked List
 	public boolean search(int data) {
 		if (this.head != null) {
 			Node temp = this.head;
@@ -76,7 +77,7 @@ public class LinkedList {
 		return false;
 	}
 
-	//Add node after a particular node in the Linked List
+	// Add node after a particular node in the Linked List
 	public void afterNode(int nodeData, int data) {
 
 		Node newNode = new Node(data);
@@ -96,7 +97,7 @@ public class LinkedList {
 		}
 	}
 
-	//Delete a node in the Linked List
+	// Delete a node in the Linked List
 	public void delete(int data) {
 
 		boolean status = search(data);
@@ -124,70 +125,86 @@ public class LinkedList {
 			System.out.println("Record not found");
 	}
 
-	//Find middle node of the Linked List
+	// Find the Nth Node in the Linked list
+	public void getNode(int num) {
+
+		int count = 1;
+
+		if (this.head != null) {
+			Node temp = this.head;
+
+			while (count < num) {
+				temp = temp.next;
+				count++;
+			}
+			System.out.println(temp.data);
+		} else {
+			System.out.println("Empty Linked List");
+		}
+	}
+
+	// Find middle node of the Linked List
 	public Node getMiddle() {
-		if(head != null) {
+		if (head != null) {
 			Node fast = head;
 			Node slow = head;
-			
-			while(slow.next != null && fast.next != null && fast.next.next != null) {
+
+			while (slow.next != null && fast.next != null && fast.next.next != null) {
 				fast = fast.next.next;
 				slow = slow.next;
 			}
-			
+
 			return slow;
 		}
 		return null;
 	}
 
-	//Find Nth node from last in the Linked List
+	// Find Nth node from last in the Linked List
 	public Node getNFromLast(int n) {
-		if(head != null) {
-			
+		if (head != null) {
+
 			int count = 0;
-			
+
 			Node fast = head;
 			Node slow = head;
-			
-			while(fast.next != null) {
+
+			while (fast.next != null) {
 				fast = fast.next;
-				if(count == n)
+				if (count == n)
 					slow = slow.next;
 				count++;
 			}
-			
+
 			return slow;
 		}
-		
-		
+
 		return null;
 	}
 
-	//Check if loop is present in the Linked List
+	// Check if loop is present in the Linked List
 	public boolean checkLoop() {
 		boolean loop = false;
-		
-		if(head != null) {
-			
+
+		if (head != null) {
+
 			Node fast = head;
 			Node slow = head;
-			
-			while(slow.next!= null && fast.next != null && fast.next.next != null) {
+
+			while (slow.next != null && fast.next != null && fast.next.next != null) {
 				fast = fast.next.next;
 				slow = slow.next;
-				
-				if(fast.equals(slow)) {
-					loop = true;
+
+				if (fast.equals(slow)) {
+					loop = true;		
 					break;
 				}
 			}
-			
+
 		}
-		
 		return loop;
 	}
-
-	//Node class
+		
+	// Node class
 	static class Node {
 
 		private int data;
