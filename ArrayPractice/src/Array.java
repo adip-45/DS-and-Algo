@@ -6,14 +6,14 @@ public class Array {
 	private int len = 0;
 	private int pointer;
 
-	//Create Array of size "N"
+	// Create Array of size "N"
 	public Array(int size) {
 		this.arr = new int[size];
 		this.len = size;
 		this.pointer = 0;
 	}
 
-	//Insert Data at the end of the Array
+	// Insert Data at the end of the Array
 	public void insert(int data) {
 		if (this.pointer >= this.len) {
 			System.out.println("Array is full");
@@ -23,7 +23,7 @@ public class Array {
 		}
 	}
 
-	//Insert data at a particular index in the Array
+	// Insert data at a particular index in the Array
 	public void insertIndex(int index, int data) {
 		if (this.pointer >= this.len) {
 			System.out.println("Array is full");
@@ -38,7 +38,7 @@ public class Array {
 		}
 	}
 
-	//Delete last element of the Array
+	// Delete last element of the Array
 	public void delete() {
 		if (this.pointer == 0) {
 			System.out.println("Empty Array");
@@ -49,7 +49,7 @@ public class Array {
 
 	}
 
-	//Delete element at a particular index in the Array
+	// Delete element at a particular index in the Array
 	public void deleteIndex(int index) {
 		while (index < this.pointer - 1) {
 			this.arr[index] = this.arr[index + 1];
@@ -59,7 +59,7 @@ public class Array {
 		this.pointer--;
 	}
 
-	//Search a particular data in the Array
+	// Search a particular data in the Array
 	public int search(int data) {
 		if (this.pointer == 0) {
 			return -1;
@@ -73,7 +73,7 @@ public class Array {
 		return -1;
 	}
 
-	//Bubble Sort
+	// Bubble Sort
 	public int[] sort() {
 		if (i == 0) {
 			System.out.println("Empty Array");
@@ -91,12 +91,29 @@ public class Array {
 		return this.arr;
 	}
 
-	//Traverse and print the Array
+	// Traverse and print the Array
 	public void print() {
 		for (i = 0; i < this.pointer; i++) {
-			System.out.print(this.arr[i]+" ");
+			System.out.print(this.arr[i] + " ");
 		}
 		System.out.println("");
+	}
+
+	public int[] push(int data, int index) {
+
+		this.pointer = index;
+
+		if (pointer == 0) {
+			this.arr[0] = data;
+			this.pointer++;
+		} else {
+			for (int i = this.pointer; i > 0; i--) {
+				this.arr[i] = this.arr[i - 1];
+			}
+			this.arr[0] = data;
+			this.pointer++;
+		}
+		return arr;
 	}
 
 }
