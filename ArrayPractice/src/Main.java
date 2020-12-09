@@ -14,6 +14,9 @@ public class Main {
 		stack.push(39);
 		stack.push(34);
 		stack.print();
+		stack.pop();
+		stack.print();
+		stack.top();
 	
 //		arr.insert(5);
 //		arr.insert(7);

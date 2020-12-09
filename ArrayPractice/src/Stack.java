@@ -19,10 +19,27 @@ public class Stack {
 		}
 	}
 
+	public void pop() {
+		if (isEmpty()) {
+			System.out.println("Stack is Empty");
+		} else {
+			this.stack.pop(this.pointer);
+			this.pointer--;
+		}
+	}
+
+	public void top() {
+		if (isEmpty()) {
+			System.out.println("Stack is Empty");
+		} else {
+			System.out.println(this.stack.top());
+		}
+	}
+
 	public void print() {
 		this.stack.print();
 	}
-	
+
 	private boolean isEmpty() {
 
 		boolean status = false;

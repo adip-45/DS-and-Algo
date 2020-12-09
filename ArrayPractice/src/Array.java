@@ -99,6 +99,7 @@ public class Array {
 		System.out.println("");
 	}
 
+	//Push data on stack
 	public int[] push(int data, int index) {
 
 		this.pointer = index;
@@ -114,6 +115,30 @@ public class Array {
 			this.pointer++;
 		}
 		return arr;
+	}
+
+	//Pop data from Stack
+	public int pop(int index) {
+		
+		this.pointer = index;
+		int value = 0;
+		
+		if (this.pointer == 0) {
+			value = this.arr[0];
+		} else {
+			value = this.arr[0];
+			for(int i=0;i<this.pointer-1;i++) {
+				arr[i]=arr[i+1];
+			}
+			this.pointer--;
+		}
+		return value;
+	}
+
+	//Get the top value of Stack
+	public int top() {
+		return this.arr[0];
+		
 	}
 
 }
