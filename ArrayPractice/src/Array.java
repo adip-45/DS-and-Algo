@@ -15,17 +15,17 @@ public class Array {
 
 	// Insert Data at the end of the Array
 	public void insert(int data) {
-		if (this.pointer >= this.len) {
+		if (isFull()) {
 			System.out.println("Array is full");
 		} else {
 			this.arr[pointer] = data;
-			pointer++;
+			this.pointer++;
 		}
 	}
 
 	// Insert data at a particular index in the Array
 	public void insertIndex(int index, int data) {
-		if (this.pointer >= this.len) {
+		if (isFull()) {
 			System.out.println("Array is full");
 		} else {
 			int count = this.pointer;
@@ -40,12 +40,12 @@ public class Array {
 
 	// Delete last element of the Array
 	public void delete() {
-		if (this.pointer == 0) {
+		if (isEmpty()) {
 			System.out.println("Empty Array");
 		} else {
 			this.arr[pointer - 1] = 0;
 		}
-		pointer--;
+		this.pointer--;
 
 	}
 
@@ -75,7 +75,7 @@ public class Array {
 
 	// Bubble Sort
 	public int[] sort() {
-		if (i == 0) {
+		if (isEmpty()) {
 			System.out.println("Empty Array");
 		} else {
 			for (i = 0; i < this.pointer; i++) {
@@ -93,18 +93,20 @@ public class Array {
 
 	// Traverse and print the Array
 	public void print() {
+
+		if (isEmpty()) {
+			System.out.println("Array is Empty");
+		}
 		for (i = 0; i < this.pointer; i++) {
 			System.out.print(this.arr[i] + " ");
 		}
 		System.out.println("");
 	}
 
-	//Push data on stack
-	public int[] push(int data, int index) {
+	// Push data on stack
+	public int[] push(int data) {
 
-		this.pointer = index;
-
-		if (pointer == 0) {
+		if (this.pointer == 0) {
 			this.arr[0] = data;
 			this.pointer++;
 		} else {
@@ -117,28 +119,59 @@ public class Array {
 		return arr;
 	}
 
-	//Pop data from Stack
-	public int pop(int index) {
-		
-		this.pointer = index;
+	// Pop data from Stack
+	public int pop() {
+
 		int value = 0;
-		
+
 		if (this.pointer == 0) {
 			value = this.arr[0];
 		} else {
 			value = this.arr[0];
-			for(int i=0;i<this.pointer-1;i++) {
-				arr[i]=arr[i+1];
+			for (int i = 0; i < this.pointer - 1; i++) {
+				arr[i] = arr[i + 1];
 			}
 			this.pointer--;
 		}
 		return value;
 	}
 
-	//Get the top value of Stack
+	// Get the top value of Stack
 	public int top() {
 		return this.arr[0];
-		
+
+	}
+
+	//Get the front element of Queue
+	public int front() {
+		return this.arr[0];
+	}
+
+	//Get the last element of Queue
+	public int rear() {
+		return this.arr[this.pointer - 1];
+	}
+
+	// Check is Array is Empty
+	public boolean isEmpty() {
+
+		boolean status = false;
+
+		if (this.pointer == 0) {
+			status = true;
+		}
+		return status;
+	}
+
+	// Check if Array is Full
+	public boolean isFull() {
+
+		boolean status = false;
+
+		if (this.pointer >= this.len) {
+			status = true;
+		}
+		return status;
 	}
 
 }
