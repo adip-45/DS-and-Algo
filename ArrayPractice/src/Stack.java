@@ -7,6 +7,7 @@ public class Stack {
 		this.stack = new Array(size);
 	}
 
+	// Push a value in Stack
 	public void push(int data) {
 		if (stack.isFull()) {
 			System.out.println("Stack is Full");
@@ -15,14 +16,16 @@ public class Stack {
 		}
 	}
 
+	// Pop value from Stack
 	public void pop() {
 		if (stack.isEmpty()) {
 			System.out.println("Stack is Empty");
 		} else {
-			this.stack.pop();
+			System.out.println(this.stack.pop());
 		}
 	}
 
+	// Get top of Stack
 	public void top() {
 		if (stack.isEmpty()) {
 			System.out.println("Stack is Empty");
@@ -31,6 +34,7 @@ public class Stack {
 		}
 	}
 
+	// Print Stack
 	public void print() {
 		if (stack.isEmpty()) {
 			System.out.println("Stack is Empty");

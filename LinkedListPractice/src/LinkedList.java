@@ -195,7 +195,7 @@ public class LinkedList {
 				slow = slow.next;
 
 				if (fast.equals(slow)) {
-					loop = true;		
+					loop = true;
 					break;
 				}
 			}
@@ -203,7 +203,67 @@ public class LinkedList {
 		}
 		return loop;
 	}
-		
+
+	// Check is Linked List is Empty
+	public boolean isEmpty() {
+		boolean status = false;
+		if (this.head == null) {
+			status = true;
+		}
+		return status;
+	}
+
+	// Enqueue a message in Queue
+	public void enqueue(int data) {
+
+		Node newNode = new Node(data);
+
+		if (isEmpty()) {
+			this.head = newNode;
+		} else {
+			Node temp = this.head;
+			while (temp.next != null) {
+				temp = temp.next;
+			}
+			temp.next = newNode;
+		}
+	}
+
+	// Dequeue a message in the queue
+	public int dequeue() {
+		if (isEmpty()) {
+			return -1; 
+		} else {
+			int data = this.head.data;
+			this.head = this.head.next;
+			return data;
+		}
+	}
+
+	//Get front element in the Queue
+	public int front() {
+		if (isEmpty()) {
+			return -1;
+		} else {
+			return this.head.data;
+		}
+	}
+
+	//Get last element in the queue
+	public int rear() {
+
+		Node temp = this.head;
+
+		if (isEmpty()) {
+			return -1;
+		} else {
+			while (temp.next != null) {
+				temp = temp.next;
+			}
+			return temp.data;
+		}
+	}
+
 	// Node class
 	static class Node {
 
@@ -232,5 +292,4 @@ public class LinkedList {
 		}
 
 	}
-
 }

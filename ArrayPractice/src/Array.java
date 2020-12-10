@@ -50,13 +50,18 @@ public class Array {
 	}
 
 	// Delete element at a particular index in the Array
-	public void deleteIndex(int index) {
+	public int deleteIndex(int index) {
+		
+		int result = arr[0];
+		
 		while (index < this.pointer - 1) {
 			this.arr[index] = this.arr[index + 1];
 			index++;
 		}
+		
 		arr[index] = 0;
 		this.pointer--;
+		return result;
 	}
 
 	// Search a particular data in the Array

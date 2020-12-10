@@ -7,6 +7,7 @@ public class Queue {
 		this.queue = new Array(size);
 	}
 
+	// Enqueue a value in Queue
 	public void enqueue(int data) {
 
 		if (queue.isFull()) {
@@ -16,14 +17,16 @@ public class Queue {
 		}
 	}
 
+	// Dequeue a value from Queue
 	public void dequeue() {
 		if (queue.isEmpty()) {
-			System.out.println("Queue is Empty");
+			System.out.println("Underflow Condition");
 		} else {
-			queue.deleteIndex(0);
+			System.out.println(queue.deleteIndex(0));
 		}
 	}
 
+	// Get front value of Queue
 	public void front() {
 		if (queue.isEmpty()) {
 			System.out.println("Queue is Empty");
@@ -33,6 +36,7 @@ public class Queue {
 
 	}
 
+	// Get last value of Queue
 	public void rear() {
 		if (queue.isEmpty()) {
 			System.out.println("Queue is Empty");
@@ -41,6 +45,7 @@ public class Queue {
 		}
 	}
 
+	// Print Queue
 	public void print() {
 		if (queue.isEmpty()) {
 			System.out.println("Queue is Empty");
