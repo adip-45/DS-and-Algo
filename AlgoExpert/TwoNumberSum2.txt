@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Program {
+  public static int[] twoNumberSum(int[] array, int targetSum) {
+    // Write your code here.
+		int num = 0;
+		boolean check = false;
+		
+		HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
+		
+		for(int i = 0; i < array.length; i++){
+			if(targetSum != 2*array[i]){
+				if(map.get(targetSum - array[i]) != null){
+					num = array[i];
+					check = true;
+					break;
+				}
+				else{
+					map.put(array[i],i);
+				}
+			}
+		}
+		if(check == true){
+			return new int[] {num, targetSum - num};
+		}
+    return new int[0];
+  }
+}

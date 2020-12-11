@@ -1,0 +1,33 @@
+import java.util.*;
+
+class Program {
+  public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
+    // Write your code here.
+		Arrays.sort(arrayOne);
+		Arrays.sort(arrayTwo);
+		
+		int num1 = 0, num2 = 0;
+		int index1 = 0, index2 = 0;
+		int diff = 0, minDiff = Integer.MAX_VALUE;
+		
+		while (index1<arrayOne.length && index2<arrayTwo.length){
+			diff = Math.abs(arrayOne[index1] - arrayTwo[index2]);
+			if(diff == 0){
+				return new int[]{arrayOne[index1], arrayTwo[index2]};
+			} 
+			
+			if(diff <= minDiff){
+				minDiff = diff;
+				num1 = arrayOne[index1];
+				num2 = arrayTwo[index2];
+			}
+			
+			if(arrayOne[index1] < arrayTwo[index2])
+				index1++;
+			else
+				index2++;
+		}
+	
+    return new int[]{num1,num2};
+  }
+}
