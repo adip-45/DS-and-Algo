@@ -19,12 +19,11 @@ public class Palindrome {
 			return false;
 		}
 
-		if (startPointer < endPointer) {
+		if (startPointer > endPointer) {
 			return true;
 		} else {
-			isPalindrome(str, startPointer + 1, endPointer - 1);
+			return isPalindrome(str, startPointer + 1, endPointer - 1);
 		}
-		return true;
 	}
 
 }
